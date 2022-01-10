@@ -6,13 +6,18 @@ import Expenses from './components/expenses';
 import Invoices from './components/invoices';
 import Invoice from './components/invoice';
 import './main.css';
+import {Provider} from "react-redux";
+import store from "./store/store";
+import {Counter} from "./components/counter";
 
 const rootElement = document.getElementById('root');
 ReactDOM.render(
+    <Provider store={store}>
     <BrowserRouter>
         <Routes>
             <Route path="/" element={<App />}>
                 <Route path="expenses" element={<Expenses />} />
+                <Route path="counter" element={<Counter />} />
                 <Route path="invoices" element={<Invoices />}>
                     <Route
                         index
@@ -34,6 +39,7 @@ ReactDOM.render(
                 />
             </Route>
         </Routes>
-    </BrowserRouter>,
+    </BrowserRouter>
+</Provider>,
     rootElement
 );
